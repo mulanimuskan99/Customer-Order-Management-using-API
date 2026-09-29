@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Customer Order Management System</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📦</text></svg>">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Customer Order Management System</h1>
+    <button class="primary" id="addBtn">Add order</button>
+  </header>
+
+  <section class="stats" id="stats" aria-live="polite"></section>
+
+  <div class="bar">
+    <input id="q" type="search" placeholder="Search customer, email, product or order ID" aria-label="Search orders">
+    <select id="f" aria-label="Filter by status"><option value="">All statuses</option></select>
+  </div>
+
+  <div class="tablebox"><table>
+    <thead><tr id="head"></tr></thead>
+    <tbody id="rows"></tbody>
+  </table><div class="empty" id="empty" hidden>No orders match. Clear the search or add a new order.</div></div>
+</div>
+
+<dialog id="dlg">
+  <form id="form" method="dialog" novalidate>
+    <h2 id="dlgTitle">Add order</h2>
+    <label>Customer name<input id="fName" required maxlength="60"></label>
+    <label>Email<input id="fEmail" type="email" required maxlength="80"></label>
+    <label>Product<input id="fProd" required maxlength="80"></label>
+    <div class="row">
+      <label>Quantity<input id="fQty" type="number" min="1" step="1" value="1" required></label>
+      <label>Unit price ($)<input id="fPrice" type="number" min="0" step="0.01" required></label>
+    </div>
+    <div class="row">
+      <label>Status<select id="fStatus"></select></label>
+      <label>Order date<input id="fDate" type="date" required></label>
+    </div>
+    <p class="err" id="err" role="alert"></p>
+    <div class="actions">
+      <button type="button" id="cancel">Cancel</button>
+      <button type="submit" class="primary" id="save">Save order</button>
+    </div>
+  </form>
+</dialog>
+<div id="toast" role="status"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
